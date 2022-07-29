@@ -22,8 +22,48 @@ const secretCodeWord2 = "Gobbledygook"
 const secretCodeWord3 = "Eccentric"
 // Expected output: "3cc3ntr1c"
 
+describe("secretCodeWord", () => {
+    it("should return a coded message", () => {
+        expect(secretCodeWord(secretCodeWord1)).toBe("L4ck4d41s1c4l");
+        expect(secretCodeWord(secretCodeWord2)).toBe("G0bbl3dyg00k");
+        expect(secretCodeWord(secretCodeWord3)).toBe("3cc3ntr1c");
+    })
+})
+
 
 // b) Create the function that makes the test pass.
+
+// Pseudocode:
+// 1. Create a function that takes in a string and returns a coded message.
+// 2. Create a function that takes in an array and a letter and returns an array of words that contain the letter.
+// use for loop iteration to check if the letter is in the word
+// for (let i = 0; i < array.length; i++) let index 0, index array length the i++ of the whole array.
+//     if (array[i].includes(letter))
+//         codedWord += array[i] to a number string.
+//    else if (array[i].includes(letter))
+//        codedWord += array[i] to a number string.
+//  this repeats to check if the letter is in the word.
+//  the assignment operator keeps the value of the last iteration.
+// return codedWord
+
+
+const secretCodeWord = (word) => {
+    let codedWord = "";
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === "a") {
+            codedWord += "4";
+        } else if (word[i] === "e") {
+            codedWord += "3";
+        } else if (word[i] === "i") {
+            codedWord += "1";
+        } else if (word[i] === "o") {
+            codedWord += "0";
+        } else {
+            codedWord += word[i];
+        }
+    }
+    return codedWord;
+}
 
 
 // --------------------2) Create a function that takes in an array of words and a single letter and returns an array of all the words containing that particular letter.
@@ -37,8 +77,35 @@ const letterA = "a"
 const letterE = "e"
 // Expected output: ["Cherry", "Blueberry", "Peach"]
 
+describe ("letterInWord", () => {
+    it("should return an array of words containing a letter", () => {
+        expect(letterInWord(fruitArray, letterA)).toEqual(["Mango", "Apricot", "Peach"]);
+        expect(letterInWord(fruitArray, letterE)).toEqual(["Cherry", "Blueberry", "Peach"]);
+    })
+})
+
 
 // b) Create the function that makes the test pass.
+
+// psuedeocode:
+// Create a function that takes in an array of words 
+// and a single letter and returns an array of all the words containing that particular letter.
+// Create a for loop that iterates through the array of words
+// let wordsWithLetter = []
+// for the length of the array of words
+// if the word contains the letter
+// push the word to the wordsWithLetter array
+// return wordsWithLetter
+
+const letterInWord = (array, letter) => {
+    let wordsWithLetter = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].includes(letter)) {
+            wordsWithLetter.push(array[i]);
+        } 
+    }
+    return wordsWithLetter;
+}
 
 
 // --------------------3) Create a function that takes in an array of 5 numbers and determines whether or not the array is a “full house”. A full house is exactly one pair and one three of a kind.
@@ -52,5 +119,84 @@ const hand2 = [5, 5, 3, 3, 4]
 const hand3 = [5, 5, 5, 5, 4]
 // Expected output: false
 
+describe ("fullHouse", () => {
+    it("should return true if the array is a full house", () => {
+        expect(fullHouse(hand1)).toBe(true);
+        expect(fullHouse(hand2)).toBe(false);
+        expect(fullHouse(hand3)).toBe(false);
+    })
+})
+
 
 // b) Create the function that makes the test pass.
+
+// Psuedocode:
+// 1. Create a function that takes in an array of 5 numbers and determines whether or not the array is a “full house”.
+// 2. Create a function that takes in an array of numbers and returns true if the array is a full house.
+// 3. Create a function that takes in an array of numbers and returns false if the array is not a full house.
+
+// Psuedocode:
+// 1. Create a function that takes in an array of numbers and returns true if the array is a full house.
+// for loop iteration to check if the array is a full house
+// for the length of the array of numbers
+// if the array contains the same number twice
+// else if the array contains the same number three times
+// return true
+// else
+// return false
+
+
+const fullHouse = (array) => {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === array[i - 1]) {
+            pair++;
+        } else if (array[i] === array[i - 2]) {
+            threeOfAKind++;
+        }
+    }
+    if (pair === 1 && threeOfAKind === 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+// first attempt:
+// const fullHouse = (array) => {
+//     let pair = 0;
+//     let threeOfaKind = 0;
+//     for (let i = 0; i < array.length; i++) {
+//         for (let j = 0; j < array.length; j++) {
+//             if (array[i] === array[j]) {
+//                 pair++;
+//                 return true;
+//             }
+//             else if (array[i] === array[j]) {
+//                 threeOfaKind++;
+//                 return true;
+//             }
+//         }
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
